@@ -1,0 +1,680 @@
+*{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: 'bigillaregular';
+  src: url('font/Bigilla.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'foundersgotesklight';
+  src: url('font/FoundersGrotesk-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+body{
+  background-color: rgb(0, 0, 0);
+  color: white;
+  overflow-x: hidden;
+  cursor: none;
+  min-height: 100vh;
+}
+.load-container {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: none;
+  pointer-events: none;
+}
+
+.barres {
+  position: fixed;
+  z-index: 950;
+  top: 0;
+  left: 0;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 80px;
+  cursor: pointer;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.81) 0%, rgba(0, 0, 0, 0) 100%);
+}
+.hamburger {
+  width: 30px;
+  height: 2px;
+  background: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+  mix-blend-mode: difference;
+}
+
+.hamburger::before,
+.hamburger::after
+{
+  content: '';
+  position: absolute;
+  width:30px;
+  height: 2px;
+  background: #fff;
+  transition: 0.5s;
+  mix-blend-mode: difference;
+}
+
+.hamburger::before {
+  top: -5px;
+}
+
+.hamburger::after {
+  top: 5px;
+}
+.barres.active .hamburger {
+    background: rgb(0, 0, 0);
+    mix-blend-mode: difference;
+}
+
+.barres.active .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.barres.active .hamburger::after {
+    top: 0;
+    transform: rotate(135deg);
+    z-index: 2000;
+}
+.menu {
+  position: fixed;
+  background: #ffffff;
+  height: 100vh;
+  width: 100%;
+  left: -120%;
+  z-index: 1000;
+  overflow-x:hidden;
+}
+.menu img{
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+.cross{
+  cursor: pointer;
+}
+ul {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+}
+ul li {
+  padding-top: 30px;
+  font-family: 'Poiret One', cursive;
+}
+a {
+  text-decoration: none;
+  color: rgb(31, 30, 30);
+  font-size: 24px;
+  font-family: 'Poiret One', cursive;
+}
+
+nav{
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+}
+nav a{
+  font-size: 40px;
+  text-decoration: none;
+  color: white;
+  mix-blend-mode: difference;
+}
+
+.noise::before{
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  z-index: -2;
+  opacity: .1;
+  pointer-events: none;
+  background: url(https://i.gifer.com/WmZ0.gif) ;
+}
+.container{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 90vh 10vh 1fr 90vh;
+  grid-gap: 0px 20px;
+}
+header{
+  grid-row: 1;
+}
+
+.main{
+  grid-column: 2 / 6;
+  grid-row: 1;
+  position: relative;
+  margin-top: 150px;
+}
+.main h1{
+  --res: calc(0.01 * 9vmin);
+  font-size: calc(230 * var(--res));
+  padding-top: 100px;
+  font-family:'bigillaregular';
+  text-transform: uppercase;
+  margin-right: 0px;
+  mix-blend-mode: difference;
+  transform: translateX(-1500px);
+
+}
+.imgProfil{
+  grid-column: 3;
+}
+.photoDeProfil{
+  width: 30%;
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  overflow-x:hidden;
+  transform: translateX(+700px);
+}
+.main h2{
+  padding-top: 20px;
+  font-family: 'Poiret One', cursive;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  mix-blend-mode: difference;
+}
+.scroll{
+  grid-column: 6;
+  grid-row: 2;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+}
+.scroll p{
+  font-size: 24px;
+  font-family: 'foundersgotesklight';
+  text-decoration: none;
+  color: white;
+  mix-blend-mode: difference;
+  cursor: pointer;
+}
+.scroll span{
+  font-size: 24px;
+}
+.scrollProjet{
+  grid-column: 3;
+  grid-row: 3;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  padding-right: 75px;
+  padding-bottom: 10px;
+}
+.scrollProjet p{
+  font-size: 24px;
+  font-family: 'foundersgotesklight';
+  text-decoration: none;
+  color: white;
+  mix-blend-mode: difference;
+  cursor: pointer;
+  position: fixed;
+  background-color: rgb(0, 0, 0);
+  bottom: 0;
+  padding-bottom: 20px;
+}
+.scrollProjet span{
+  font-size: 24px;
+}
+.projet{
+  margin-top: 100px;
+  justify-content: center;
+  height: 100%;
+  grid-row: 3;
+  grid-column: 1 / 7;
+}
+.projet h3{
+  font-family: 'Poiret One', cursive;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 150px;
+  mix-blend-mode: difference;
+}
+.listProjet{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.logoProj{
+  width: 100%;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+}
+.textProjetNumber{
+  color: white;
+  width: 50px;
+  font-size: 120px;
+  font-family: 'bigillaregular';
+  mix-blend-mode: difference;
+  padding-right: 30px;
+}
+.textProjet {
+  font-size: 24px;
+  font-family: 'Poiret One', cursive;
+  color: white;
+
+}
+.listProjet img{
+  width: 20%;
+  object-fit: cover;
+  z-index: 600;
+  position: absolute;
+  padding-right: 100px;
+}
+.lineContainer{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.line{
+  height: 1px;
+  width: 600px;
+  background-color: white;
+  mix-blend-mode: difference;
+  margin: 15px;
+}
+#image1{
+  width: 40px;
+    height: 40px;
+    border: 1px dashed white;
+    border-radius: 50%;
+    position: absolute;
+    animation: Anim1 1s infinite alternate;
+  pointer-events: none;
+}
+
+.cursor{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin-left: 0px;
+  margin-top: -0px;
+  border-radius: 50%;
+  background-color: #fff;
+  mix-blend-mode: difference;
+  transition: transform .3s ease;
+  transform-origin: center center;
+  pointer-events: none;
+  z-index: 1500;
+  transform: scale(0),rotate(0deg);
+}
+
+.grow, .grow-small{
+  transform: scale(10);
+  border: none;
+}
+.grow-cursor1{
+  transform: scale(30);
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: none;
+  background-image: url(img/presmus.png);
+  z-index: 1500;
+}
+.grow-cursor2{
+  transform: scale(30);
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: none;
+  background-image: url(img/presblog.png);
+  z-index: 1500;
+}
+.grow-cursor3{
+  transform: scale(30);
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: none;
+  background-image:url(img/presEtudi.png);
+  z-index: 1500;
+}
+.grow-cursor4{
+  transform: scale(30);
+  background-size: cover;
+  background-repeat: no-repeat;
+  mix-blend-mode: none;
+  background-image: url(img/presmus.png);
+  z-index: 1500;
+}
+
+.grow-small{
+  transform: scale(2.5);
+}
+
+.pointerAction{
+  cursor: pointer;
+}
+
+.contact{
+  margin-top: 100px;
+  justify-content: center;
+  grid-row: 4;
+  grid-column: 1 / 7;
+}
+.contact h3{
+  margin-top: 60px;
+  font-family: 'Poiret One', cursive;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 60px;
+  mix-blend-mode: difference;
+}
+
+footer{
+  border-top: 1px solid;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(19, 19, 19);
+}
+footer div{
+  height: 33.33%;
+}
+footer p{
+  font-family: 'Poiret One', cursive;
+  font-size: 24px;
+}
+.copyrightNav{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
+.copyright{
+  font-size: 16px;
+  color: rgb(78, 78, 78);
+}
+.contactFooter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: underline;
+}
+.navFooter{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+}
+.textPres{
+  display: flex;
+  justify-content: center;
+}
+.textPres p{
+  display: flex;
+  width: 60%;
+  font-family: 'Poiret One', cursive;
+  font-size: 19px;
+  line-height: 40px;
+}
+
+.containerPres{
+  display: grid;
+  grid-template-columns: 1fr 70vw 1fr ;
+  grid-template-rows: 10vh 10vh 1fr 40vh;
+  grid-gap: 0px 20px;
+}
+
+.footerEtudi{
+  grid-row: 3;
+  grid-column: 1 / 4;
+}
+
+.footerMus{
+  grid-row: 4;
+  grid-column: 1 / 4;
+}
+.headerMus{
+  grid-row: 1;
+}
+
+.ImgPres{
+  grid-row: 2;
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(24, 24, 24);
+}
+.ImgPres img {
+margin-top: 20px;
+}
+.row3{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-row: 3;
+  grid-column: 2;
+  background-color: rgb(24, 24, 24);
+}
+
+.ImgPres2{
+  grid-row: 3;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.ImgPres2 img{
+  width: 50%;
+  margin-top: 50px;
+}
+
+.widthMus img{
+  width: 80% !important;
+}
+
+.paraPres{
+  grid-row: 3;
+  grid-column: 2;
+  display: grid;
+  justify-content: center;
+}
+
+.paraPres p {
+  margin-top: 50px;
+  font-family: 'Poiret One', cursive;
+}
+.paraPres a {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.videoEtudi{
+  padding-top: 50px;
+  grid-row: 3;
+  grid-column: 2;
+
+}
+
+.videoEtudi iframe{
+  width: 100%;
+}
+
+
+@media (max-width : 1400px) {
+  .main h1{
+    margin-right: 30px;
+    font-size: calc(180 * var(--res));
+    padding-top: 0px;
+    transform: translateX(-50px);
+  }
+  .scroll img{
+    padding-top: 200px;
+  }
+}
+
+
+@media (max-width : 800px) {
+  body{
+    cursor: pointer;
+  }
+  .cursor{
+    display: none;
+  }
+  .container{
+    grid-template-columns: 1fr;
+    grid-template-rows: 100vh 1fr 20vh 1fr;
+    grid-gap: 0px 0px;
+  }
+  .main{
+    grid-row: 1;
+    grid-column: 1;
+    margin-top: 150px;
+  }
+  .main h1{
+    margin-right: 0px;
+    font-size: calc(180 * var(--res));
+    padding-top: 0px;
+    transform: translateX(0px);
+  }
+  .imgProfil{
+    grid-column: 1;
+  }
+  .photoDeProfil{
+    padding-top: 150px;
+    width: 50%;
+    transform: translateX(0px);
+  }
+  .scroll{
+    grid-row: 1;
+    grid-column: 1;
+    justify-content: end;
+    align-items: flex-end;
+    margin-bottom: 35%;
+  }
+  .load-container{
+    height: 150%;
+    overflow-y: hidden;
+  }
+  .listProjet{
+    justify-content: space-around;
+    margin-left: 0px;
+    margin-right: 0px;
+
+  }
+  .projet{
+    margin-top: 0px;
+    grid-row: 2;
+  }
+  .projet h3{
+    font-size: 45px;
+
+  }
+  .textProjetNumber{
+    font-size: 64px;
+    font-family: 'bigillaregular';
+  }
+  .textProjet{
+    font-size: 16px;
+  }
+  .scrollProjet{
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: flex-end;
+    align-items: flex-end;
+    display: flex;
+  }
+  .scrollProjet p{
+    font-size: 19px;
+    font-family: 'foundersgotesklight';
+    text-decoration: none;
+    color: white;
+    mix-blend-mode: difference;
+    cursor: pointer;
+    position: fixed;
+    background-color: rgb(0, 0, 0);
+    bottom: 10px;
+    display: flex;
+    right: 0;
+    padding-right: 10px;
+  }
+  .scrollProjet span{
+    font-size: 19px;
+  }
+  .contact{
+    margin-top: 0px;
+    height: 140px;
+    grid-row: 3;
+  }
+  .contact h3{
+    font-size: 45px;
+  }
+  .containerPres{
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 10vh 1fr;
+    grid-gap: 0px 0px;
+  }
+
+  .presentation{
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+    grid-row: 1;
+    grid-column: 1;
+  }
+  .presentation img{
+    width: 100%;
+  }
+  .imgPres{
+    display: flex;
+    justify-content: center;
+  }
+  .imgPres3{
+    flex-wrap: wrap;
+  }
+  footer{
+    margin-top: 30px;
+  }
+  .presentationLiens{
+    display: grid;
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .ImgPres img{
+    width: 70%;
+  }
+  .ImgPres2 img{
+    width: 100%;
+  }
+  .ImgPres2{
+    flex-wrap: wrap;
+  }
+}
